@@ -1,15 +1,24 @@
 import React from 'react';
 import './Timeline.css';
 import TimelineEvent from './TimelineEvent';
+import Timestamp from './Timestamp';
+
+
 
 const Timeline = (props) => {
   
+  const timelineEvents = props.events.map((timelineEvent, i)  => {
+    return (
+      <li key={i}>
+        <TimelineEvent person={timelineEvent.person} status={timelineEvent.status} timestamp= {<Timestamp time= {timelineEvent.timestamp}/>}/>
+      </li>
+    );
+  });
+
   return (
-    <ul className="timeline">
-    <li>
-      <TimelineEvent person="????" status="HuH???" />
-    </li>
-  </ul>
+    <ul>
+      {timelineEvents}
+    </ul>
   );
 };
 // This will will take a list of timeline events as a prop and render a list of TimelineEvent components:
